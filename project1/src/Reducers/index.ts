@@ -22,7 +22,8 @@ export interface IReimbursementState{
     userIdReimbursements:Reimbursement[],
     statusIdReimbursements:Reimbursement[],
     statusId: number,
-    updatedReimbursement:Reimbursement
+    updatedReimbursement:Reimbursement,
+    dirtyRBit:boolean
 }
 
 export interface IMyProfileState{

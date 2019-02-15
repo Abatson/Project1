@@ -9,6 +9,7 @@ const initialState: IReimbursementState = {
     statusIdReimbursements: [],
     statusId: 0,
     updatedReimbursement: new Reimbursement,
+    dirtyRBit: false,
 }
 
 export const reimbursementReducer = (state = initialState, action: any) => {
@@ -16,7 +17,8 @@ export const reimbursementReducer = (state = initialState, action: any) => {
     case reimbursementTypes.GET_BY_USER_ID:
       return {
         ...state,
-        userIdReimbursements: action.payload.userIdReimbursements
+        userIdReimbursements: action.payload.userIdReimbursements,
+        dirtyRBit: false
       }
     case reimbursementTypes.BAD_REIMBURSEMENT_REQUEST:
         return state;
@@ -72,9 +74,30 @@ export const reimbursementReducer = (state = initialState, action: any) => {
         }
       }
     case reimbursementTypes.UPDATE_REIMBURSEMENT:
+      // for (const key of state.userIdReimbursements) {
+      //   if(key.reimbursementId === state.updatedReimbursement.reimbursementId) {
+      //     key.description = state.updatedReimbursement.description;
+      //     key.status.statusId = state.updatedReimbursement.status.statusId
+      //     if(key.status.statusId === 1){
+      //       key.status.status = 'Pending'
+      //     } else if(key.status.statusId === 2){
+      //       key.status.status = 'Approved'
+      //     } else {
+      //       key.status.status = 'Denied'
+      //     }
+      //     key.type.typeId = state.updatedReimbursement.type.typeId
+      //     if(key.type.typeId === 1){
+      //       key.type.type = 'Lodging'
+      //     } else if(key.status.statusId === 2){
+      //       key.status.status = 'Approved'
+      //     }
+      //   }
+      // }
+
       return{
         ...state,
-        updatedReimbursement: new Reimbursement
+        updatedReimbursement: new Reimbursement,
+        dirtyRBit: action.payload.dirtyRBit
       }    
   }
   return state;

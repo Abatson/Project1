@@ -15,6 +15,7 @@ interface IMyProfileProps {
     userIdReimbursements: Reimbursement[],
     newReimbursement:Reimbursement,
     postRequestMessage:string,
+    dirtyRBit:boolean,
     getReimbursementByUId: (userid:number) => void,
     updateReimbursement: (newReimbursement:Reimbursement) => void,
     updateAmount: (amount:number) => void,
@@ -44,6 +45,25 @@ componentDidMount() {
         type: ''
     })
 }
+
+componentWillUpdate() {
+    if(this.props.newReimbursement.status.statusId === 0){
+        this.props.updateStatus({
+            statusId: 1,
+            status: ''
+        })
+        this.props.updateType({
+            typeId: 4,
+            type: ''
+        })
+    }
+}
+
+// componentDidUpdate() {
+//     if(this.props.dirtyRBit){
+//         this.props.getReimbursementByUId(this.props.user.userId)
+//     }
+// }
 
 updateReimbursement = (event) => {
     event.preventDefault(); // prevent default form submission

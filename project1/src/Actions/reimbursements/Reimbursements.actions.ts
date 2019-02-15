@@ -15,7 +15,9 @@ export const reimbursementTypes = {
     UPDATE_STATUS: 'UPDATE_STATUS',
     UPDATE_TYPE: 'UPDATE_TYPE',
     UPDATE_REIMBURSEMENT: 'UPDATE_REIMBURSEMENT',
-    SET_REIMBURSEMENT_ID: 'SET_REIMBURSEMENT_ID'
+    SET_REIMBURSEMENT_ID: 'SET_REIMBURSEMENT_ID',
+    DIRTY_REIMBURSEMENT: 'DIRTY REIMBURSEMENT',
+    CLEAN_REIMBURSEMENT: 'CLEAN_REIMBURSEMENT',
 }
 
 
@@ -26,6 +28,12 @@ export const getReimbursementByUId = (userid:number) => async (dispatch ) => {
     try {
         const res = await ersClient.get(`/reimbursements/author/userId/${userid}`);
         let userIdReimbursements:Reimbursement[]  = res.data;
+        for (const key of userIdReimbursements) {
+            console.log(key.dateResolved)
+            if(key.dateResolved === '1970-01-01T00:00:00.000Z'){
+                key.dateResolved = ''
+            }
+        }
         dispatch({
                   payload:{
                     userIdReimbursements: userIdReimbursements
@@ -51,6 +59,12 @@ export const getReimbursementByStatusId = (status:number) => async (dispatch ) =
     try {
         const res = await ersClient.get(`/reimbursements/status/${status}`);
         let statusIdReimbursements:Reimbursement[]  = res.data;
+        for (const key of statusIdReimbursements) {
+            console.log(key.dateResolved)
+            if(key.dateResolved === '1970-01-01T00:00:00.000Z'){
+                key.dateResolved = ''
+            }
+        }
         dispatch({
                   payload:{
                     statusIdReimbursements: statusIdReimbursements
@@ -142,6 +156,7 @@ export const updateReimbursement = (updatedReimbursement:Reimbursement) => async
         const res = await ersClient.patch(`/reimbursements`, updatedReimbursement);
         dispatch({
                   payload:{
+                      dirtyRBit: true
                   },
                   type: reimbursementTypes.UPDATE_REIMBURSEMENT
               })

@@ -10,7 +10,8 @@ const mapStateToProps = (state: IState, ownProps) => {
      user: state.login.user,
      userIdReimbursements: state.reimbursement.userIdReimbursements,
      newReimbursement: state.myProfile.newReimbursement,  
-     postRequestMessage: state.myProfile.postRequestMessage   
+     postRequestMessage: state.myProfile.postRequestMessage,
+     dirtyRBit: state.reimbursement.dirtyRBit   
     }
   }
   
