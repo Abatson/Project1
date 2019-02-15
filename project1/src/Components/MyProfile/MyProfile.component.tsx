@@ -80,10 +80,10 @@ rLinkTo = () => {
 }
 
   render  () {
-    const userComponent:any = <UserIdDisplayComponent  user={this.props.user} onClick={()=>this.linkTo()}/>;
+    const userComponent:any = <UserIdDisplayComponent hoverable={false} user={this.props.user} onClick={()=>this.linkTo()}/>;
     const allReimbursements:any[] = [];
     for (const key of this.props.userIdReimbursements) {
-        allReimbursements.push(<ReimbursementIdDisplayComponent key={key.reimbursementId} reimbursement={key} username={this.props.user.username} onClick={()=> this.rLinkTo()}/> 
+        allReimbursements.push(<ReimbursementIdDisplayComponent hoverable={false} key={key.reimbursementId} reimbursement={key} username={this.props.user.username} onClick={()=> this.rLinkTo()}/> 
         )
         
     }

@@ -55,7 +55,7 @@ linkTo = (key:String) => {
     } else {
         const usersComponents:any[] = [];
         for (const key of this.props.allUsers) {
-            usersComponents.push(<UserIdDisplayComponent key={key.userId} user={key} onClick={()=>this.linkTo(key.username)}/> 
+            usersComponents.push(<UserIdDisplayComponent hoverable={true} key={key.userId} user={key} onClick={()=>this.linkTo(key.username)}/> 
             )
             
         }

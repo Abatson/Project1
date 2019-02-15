@@ -70,10 +70,10 @@ rLinkTo = (key:number) => {
 
   render  () {
         const rUser = this.getUser(this.props.params.username)
-        const userComponent:any = <UserIdDisplayComponent  user={rUser} onClick={()=>this.linkTo()}/>;
+        const userComponent:any = <UserIdDisplayComponent hoverable={false} user={rUser} onClick={()=>this.linkTo()}/>;
         const allReimbursements:any[] = [];
         for (const key of this.props.userIdReimbursements) {
-            allReimbursements.push(<ReimbursementIdDisplayComponent key={key.reimbursementId} reimbursement={key} username={this.props.params.username} onClick={()=> this.rLinkTo(key.reimbursementId)}/> 
+            allReimbursements.push(<ReimbursementIdDisplayComponent hoverable={true} key={key.reimbursementId} reimbursement={key} username={this.props.params.username} onClick={()=> this.rLinkTo(key.reimbursementId)}/> 
             )
             
         }
@@ -107,7 +107,7 @@ rLinkTo = (key:number) => {
                         {allReimbursements}
                     </tbody>
                 </table>
-                {this.props.user.role.roleId === 1 && <UserUpdateComponent user={rUser}/>}
+                {this.props.user.role.roleId === 1 && <UserUpdateComponent user={rUser} />}
             </div>
         )
     }

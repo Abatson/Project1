@@ -116,7 +116,7 @@ linkTo = () => {
         const rReimbursement = this.getReimbursement(+this.props.params.id)
         const rUser = this.getUser(rReimbursement.author).username
         
-        const reimbursementComponent:any = <ReimbursementIdDisplayComponent reimbursement={rReimbursement} username={rUser} onClick={()=>this.linkTo()}/>;
+        const reimbursementComponent:any = <ReimbursementIdDisplayComponent hoverable={false} reimbursement={rReimbursement} username={rUser} onClick={()=>this.linkTo()}/>;
         // const allReimbursements:any[] = [];
         // for (const key of this.props.userIdReimbursements) {
         //     allReimbursements.push(<ReimbursementIdDisplayComponent key={key.reimbursementId} reimbursement={key} username={this.props.params.username} /> 

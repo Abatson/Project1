@@ -77,7 +77,7 @@ setStatus = (status:number) => {
     } else {
         const reimbursementDisplayComponents:any[] = [];
         for (const key of this.props.statusIdReimbursements) {
-            reimbursementDisplayComponents.push(<ReimbursementIdDisplayComponent key={key.reimbursementId} reimbursement={key} username={this.getUsernameById(key.author)} onClick={()=> this.linkTo(key.reimbursementId)} /> 
+            reimbursementDisplayComponents.push(<ReimbursementIdDisplayComponent hoverable={true} key={key.reimbursementId} reimbursement={key} username={this.getUsernameById(key.author)} onClick={()=> this.linkTo(key.reimbursementId)} /> 
             )
             
         }
